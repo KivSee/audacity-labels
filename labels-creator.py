@@ -30,14 +30,14 @@ num_of_beats = num_of_episodes * args.beats_per_episode
 
 
 def create_labels_series(outfile, start, duration, repeats, label):
-    print("writing lable file: '{}'".format(outfile))
+    print("writing label file: '{}'".format(outfile))
     with open(outfile, "w+") as f:
         for i in range(0, repeats):
             start_time = start + i * duration
             f.write(str(start_time) + "\t" + str(start_time) + "\t" + label + str(i) + "\n")
 
-outfile_episodes = os.path.join(args.out_dir, file_name + "_audacity_episodes.txt")
+outfile_episodes = os.path.join(args.out_dir, file_name + "_episodes.txt")
 create_labels_series(outfile_episodes, args.start_offset, episode_length, num_of_episodes, "episode_")
 
-outfile_beats = os.path.join(args.out_dir, file_name + "_audacity_beats.txt")
+outfile_beats = os.path.join(args.out_dir, file_name + "_beats.txt")
 create_labels_series(outfile_beats, args.start_offset, beat_length, num_of_beats, "beat_")
